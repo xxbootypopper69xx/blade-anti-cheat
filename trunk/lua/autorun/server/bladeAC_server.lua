@@ -12,6 +12,9 @@ require("datastream")
 if not SERVER then return end
 
 AddCSLuaFile("autorun/client/bladeAC_client.lua")
+resource.AddFile("sounds/BladeAC/serveropjoined-female.mp3")
+resource.AddFile("sounds/BladeAC/serveradminjoined-female.mp3")
+resource.AddFile("sounds/BladeAC/serverownerjoined-f-mix.mp3")
 
 CreateConVar("Blade_Anticheat_Active", 1, FCVAR_SERVER_CAN_EXECUTE)
 
