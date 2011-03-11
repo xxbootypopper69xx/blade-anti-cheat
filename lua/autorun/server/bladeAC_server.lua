@@ -89,5 +89,3 @@ function whereisplayer(ply)
 	local pos = player:GetPos();
 	return pos
 end
-
--- lua_openscript

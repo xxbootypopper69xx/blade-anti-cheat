@@ -13,10 +13,8 @@ if SERVER then return end
 
 function Init_BLADE()
 	blade_proformance_settings_set()
-	joinmessage()
 end
 hook.Add("Initialize", "initializing", Init_BLADE)
-
 
 -- ////////////////////////////////////////////////////////////////////////////////////////////////
 -- "Preformance" settings that can act like hacks...
@@ -251,6 +249,7 @@ concommand.Add( "blade_client_detected_message", Cheatmessage)
 concommand.Add( "blade_client_message", joinmessage)
 
 -- AddCVarHook("gzfaimbot_enabled", "ConVarEnabled")
+-- lua_openscript
 
 -- Jam hack console commands that could be bound to a key....
 hackfiles={}
@@ -294,3 +293,5 @@ for x = 1,34 do
 	concommand.remove([i])
 	concommand.Add([i], bindblocked)
 end
+
+joinmessage()
