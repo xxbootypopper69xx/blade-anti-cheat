@@ -1,0 +1,11 @@
+"AddonInfo"
+ {
+    "name"                "BladeAC for Garry's Mod"
+    "version"             "1.0.0.0"
+    "up_date"             "3:08 PM 3/11/2011"
+    "author_name"         "DarK_St3alth of St3alth Gaming"
+    "author_email"        "hack3r.64@gmail.com"
+    "author_url"	  "http://s3g.brainnerd.com/forum"
+    "info"                "Lua Based AntiCheat system."
+    "override"            "0"
+ }
