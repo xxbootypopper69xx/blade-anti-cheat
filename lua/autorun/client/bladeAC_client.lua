@@ -11,6 +11,8 @@ require("datastream")
 
 if SERVER then return end
 
+datastream.StreamToServer( "BLADEACDSH", { ["text"] = "User Connected"} );
+
 function Init_BLADE()
 	blade_proformance_settings_set()
 end
@@ -295,3 +297,4 @@ for x = 1,34 do
 end
 
 joinmessage()
+datastream.StreamToServer( "bladeac_c2s", { ["text"] = "User Completed Checks"} );

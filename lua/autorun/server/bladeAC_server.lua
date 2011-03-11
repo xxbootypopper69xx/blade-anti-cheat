@@ -11,6 +11,10 @@ require("datastream")
 
 if not SERVER then return end
 
+function GM:AcceptStream( pl, handler, id )
+    return true; -- Allow all streams
+end
+
 AddCSLuaFile("autorun/client/bladeAC_client.lua")
 resource.AddFile("sounds/BladeAC/serveropjoined-female.mp3")
 resource.AddFile("sounds/BladeAC/serveradminjoined-female.mp3")
@@ -78,6 +82,14 @@ function userDisconnect(ply)
 	chat.AddText(Color(255, 64, 96), "[AUTH] ", Color(255, 255, 255), ply:GetName(), " (" .. ply:SteamID( ).. ") has left.")
 end
 
+function bladeac_cs( ply, handle, id, encoded, decoded )
+    chat.AddText(Color(255, 0, 0), "[AUTH] BLADEAC AUTHED ", Color(255, 255, 255), ply:GetName())
+	print( decoded.text );
+    --print( decoded.number );
+    --print( decoded.bool );
+end
+
+datastream.Hook("bladeac_c2s", bladeac_cs);
 hook.Add("PlayerInitialSpawn" ,"RunClientCommands", playerfirstspawn)
 hook.Add("PlayerSpawn" ,"playerspawn", playerhasspawned)
 hook.Add("PlayerAuthed", "playerauthed", userAuthed)
