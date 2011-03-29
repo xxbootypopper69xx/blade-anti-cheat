@@ -1,0 +1,4 @@
+Added: Sounds and downloading code. I'll be adding the sounds in later.
+Added: Experimental SE Bypass detection.
+Changed: The way it does console hack bind removing. May not remove them any more. I'll be fixing later. 
+Fixed: The code shows the console text on join, just not the derma pop up (which can executed later >.>)
