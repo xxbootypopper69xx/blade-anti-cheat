@@ -1,22 +1,15 @@
---
--- Blade AntiCheat™
---
--- LUA based Cheat/Resource/Illegal CFG's/Convars/Aimbots/Hack detection.
---
--- Designed and Programed by: DarK_St3alth (St3alth Gaming)
---
--- More information: http://s3g.brainnerd.com/forum
---
+--[[
+		Blade AntiCheat™
+
+		LUA based Cheat/Resource/Illegal CFG's/Convars/Aimbots/Hack detection.
+
+		Designed and Programed by: DarK_St3alth (St3alth Gaming) & SE Check by BlueKirby (St3alth Gaming)
+
+		More information: http://s3g.brainnerd.com/forum
+]]
 require("datastream")
 
 if SERVER then return end
-
-datastream.StreamToServer( "BLADEACDSH", { ["text"] = "User Connected"} );
-
-function Init_BLADE()
-	blade_proformance_settings_set()
-end
-hook.Add("Initialize", "initializing", Init_BLADE)
 
 -- ////////////////////////////////////////////////////////////////////////////////////////////////
 -- "Preformance" settings that can act like hacks...
@@ -43,6 +36,8 @@ function blade_proformance_settings_set()
 	RunConsoleCommand("dsp_off", "0")
 end
 -- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+-- Yes, lol at the black list. I'm lazy...
 
 function bladecheck(player, command, arguments)
 	-- Msg( "Printing Something\n" )
@@ -107,6 +102,7 @@ function CheatSearch(Search, Folders, Files)
 			RunConsoleCommand("disconnect")
 		end
 	end
+end
 
 function Cheatmessage()
 
@@ -253,48 +249,10 @@ concommand.Add( "blade_client_message", joinmessage)
 -- AddCVarHook("gzfaimbot_enabled", "ConVarEnabled")
 -- lua_openscript
 
--- Jam hack console commands that could be bound to a key....
-hackfiles={}
-hackfiles[1]="gzfaimbot_reload"
-hackfiles[2]="gzfaimbot_toggle"
-hackfiles[3]="+gzfaimbot"
-hackfiles[4]="-gzfaimbot"
-hackfiles[5]="aa_enabled"
-hackfiles[6]="gzfaimbot_menu"
-hackfiles[7]="at_menu"
-hackfiles[8]="at_autoshoot_on"
-hackfiles[9]="at_autoshoot_off"
-hackfiles[10]="at_autoaim_on"
-hackfiles[11]="at_autoaim_off"
-hackfiles[12]="at_esp_on"
-hackfiles[13]="at_esp_off"
-hackfiles[14]="at_changer_on"
-hackfiles[15]="at_changer_off"
-hackfiles[16]="at_norecoil_on"
-hackfiles[17]="at_norecoil_off"
-hackfiles[18]="Bacon_Reload_Script"
-hackfiles[19]="hack_menu"
-hackfiles[20]="hackmenu"
-hackfiles[20]="PH_reload"
-hackfiles[21]="PH_toggle"
-hackfiles[22]="+PH"
-hackfiles[23]="-PH"
-hackfiles[24]="PH_menu"
-hackfiles[25]="neon_menu"
-hackfiles[26]="neonmenu"
-hackfiles[27]="neonopen"
-hackfiles[28]="neon_open"
-hackfiles[29]="neon_derma"
-hackfiles[30]="neonactivate"
-hackfiles[31]="+trooper_menu"
-hackfiles[32]="jam_materials"
-hackfiles[33]="-trooper_menu"
-hackfiles[34]="gzfaimbot_enabled"
-
-for x = 1,34 do
-	concommand.remove([i])
-	concommand.Add([i], bindblocked)
-end
-
 joinmessage()
-datastream.StreamToServer( "bladeac_c2s", { ["text"] = "User Completed Checks"} );
+blade_proformance_settings_set()
+RunConsoleCommand("lua_run_cl", 'chat.AddText(Color(255,0,0),"Script enforcer bypass detected!") RunConsoleCommand("disconnect")')
+--RunConsoleCommand("say", "[BLADE] I'm using a cheat.")
+--RunConsoleCommand("team_say", "[BLADE] I'm using a cheat.")
+--RunConsoleCommand("say_team", "[BLADE] I'm using a cheat.")
+joinmessage()
