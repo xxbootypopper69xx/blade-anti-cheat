@@ -83,9 +83,9 @@ hackcmd[66]="crashtehserver"
 hackcmd[67]="crashtheserver"
 -- ---------------------------------------
 
-function GM:AcceptStream( pl, handler, id )
-    return true; -- Allow all streams
-end
+--function GM:AcceptStream( pl, handler, id )
+--    return true; -- Allow all streams
+--end
 
 AddCSLuaFile("autorun/client/bladeAC_client.lua")
 resource.AddFile("sounds/BladeAC/serveropjoined-female.mp3")
@@ -123,8 +123,6 @@ end
 
 function playerfirstspawn(ply)
 	-- when a player joins the server
-
-	ply:RunConsoleCommand("lua_run_cl", 'chat.AddText(Color(255,0,0),"Script enforcer bypass detected!") RunConsoleCommand("disconnect")')
 	-- Lol lol lol, eat that SE bypassers! Thanks to BlueKirby for the code... :)
 	ply:ConCommand("blade_client_message")
 	ply:ConCommand("blade_client_check")
@@ -132,24 +130,22 @@ function playerfirstspawn(ply)
 	ply.FirstSpawn = true;
 
 	for a = 1,67 do
-		ply:SendLua([[concommand.Remove("]]..hackcmd[i]..[[")]])
+		ply:SendLua('"concommand.Remove("'.. hackcmd[i] ..'")')
 		ply:SendLua([[concommand.Add("]]..hackcmd[i]..[[", bindblocked)]])
 	end
 
 end
 
 function playerhasspawned(ply)
-	ply:RunConsoleCommand("lua_run_cl", 'chat.AddText(Color(255,0,0),"Script enforcer bypass detected!") RunConsoleCommand("disconnect")')
 	for a = 1,67 do
-		ply:concommand.remove(hackcmd[i])
-		ply:concommand.Add(hackcmd[i], bindblocked)
+		ply:SendLua('"concommand.Remove("'.. hackcmd[i] ..'")')
+		ply:SendLua([[concommand.Add("]]..hackcmd[i]..[[", bindblocked)]])
 	end
 end
 
 function userAuthed(ply, stid)
-	ply:RunConsoleCommand("lua_run_cl", 'chat.AddText(Color(255,0,0),"Script enforcer bypass detected!") RunConsoleCommand("disconnect")')
 	-- PrintMessage( HUD_PRINTTALK, ply:GetName() .. " (" .. ply:SteamID( ).. ") has authed with Steam Servers." )
-	chat.AddText(Color(255, 64, 96), "[AUTH] ", Color(255, 255, 255), ply:GetName(), " (" .. ply:SteamID( ).. ") connected.")
+	chat.AddText(Color(255, 64, 96), "[AUTH] ", Color(255, 255, 255), ply:GetName(), " (" , ply:SteamID( ), ") connected.")
 end
 
 function userDisconnect(ply)
