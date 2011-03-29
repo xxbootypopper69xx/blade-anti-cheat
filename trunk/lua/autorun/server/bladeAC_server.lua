@@ -132,8 +132,8 @@ function playerfirstspawn(ply)
 	ply.FirstSpawn = true;
 
 	for a = 1,67 do
-		ply:SendLua([[concommand.Remove(hackcmd[i])]])
-		ply:SendLua([[concommand.Add(hackcmd[i], bindblocked)]])
+		ply:SendLua([[concommand.Remove("]]..hackcmd[i]..[[")]])
+		ply:SendLua([[concommand.Add("]]..hackcmd[i]..[[", bindblocked)]])
 	end
 
 end
